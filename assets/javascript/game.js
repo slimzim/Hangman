@@ -1,11 +1,14 @@
 console.log("Welcome to Hangman!")
 
+// Variables set to initial values
+
+
 var wins = 0;
 var guessesRemaining = ""
 var userWins = ""
 var hangmanArray = [];
 var alreadyGuessed = [];
-console.log("Already Guessed:" + alreadyGuessed)
+var duplicateGuess = false;
 
 initialize();
 
@@ -14,6 +17,9 @@ function initialize(){
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
     document.getElementById("wins").innerHTML = wins;
 }
+
+// A word is randomly chosen from the beatlesSongs array for this round
+
 
 var beatlesSongs = [
     "Help", 
@@ -31,6 +37,9 @@ function songChooser() {
     return hangmanWord;
   }
 
+
+// Word is then converted to an array of individual letters and spaces
+
 wordToArray();
 
 function wordToArray(){
@@ -42,6 +51,8 @@ function wordToArray(){
         hangmanArray = hangmanArray.map(function(x){ return x.toUpperCase() })
         console.log(hangmanArray)
 }
+
+// A second array is created to be displayed as blank spaces 
 
 
 currentWordInit();
@@ -72,17 +83,17 @@ function currentWordInit(){
         console.log("User Guess: ", userGuess);
         var guessSuccess = false;
         userWins = false;
-        console.log(guessSuccess)
 
-    
+// This function determines if the user has already guessed that letter or not
 
+    function scanGuess() {
+        if (alreadyGuessed.includes(userGuess) && alreadyGuessed.length > 1) {
+            console.log("duplicate guess")
+            document.getElementById("instructions").innerHTML = "You already guessed " + userGuess + "!";         
+        }
+    }
 
-
-
-
-
-        
-// userGuess is compared to every index in hangmanArray
+// userGuess is compared to every index in hangmanArray, and blank spaces are replaced with the letter.
 
     for (i = 0; i < hangmanArray.length; i++){    
         
@@ -93,12 +104,10 @@ function currentWordInit(){
         console.log(wordDisplay);
         guessSuccess = true;
         }
-    
-
-    else if (i === hangmanArray.length-1) {
-        console.log("Running turnResults function...")
-        turnResults()
     }
+
+    console.log("Running turnResults function...")
+        turnResults()
 
 // Results of the guess are displayed
     
@@ -107,7 +116,6 @@ function currentWordInit(){
     if (guessSuccess === true) {
         document.getElementById("instructions").innerHTML = userGuess + " is in the word!"
         console.log("Guesses Remaining: " + guessesRemaining)
-        console.log(guessSuccess)
         didYouWin()
         
     }
@@ -115,57 +123,42 @@ function currentWordInit(){
     else if (guessSuccess === false) {
         document.getElementById("instructions").innerHTML = userGuess + " is not in the word!"
         guessesRemaining--;
+        if (guessesRemaining < 1) {
+            loseGame();
+        }
         document.getElementById("guessesRemaining").innerHTML = guessesRemaining
         console.log("Guesses Remaining: " + guessesRemaining) 
         alreadyGuessed.push(userGuess);
         console.log(alreadyGuessed);
-        document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.join(" ")
+        document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.join(" ")  
     }
 
     }
 }
 
-// scan wordDisplay array for _
+// This function determines if the user has won.
 
-        function didYouWin(){
-    
-            if (wordDisplay.includes("_ ")) {
-                console.log("_ still exists")
-            }
-            else {
-                console.log("user wins")
-                document.getElementById("instructions").innerHTML = "You win!"
-                wins++;
-            }
-            
+    function didYouWin(){
+
+        if (wordDisplay.includes("_ ")) {
+            console.log("_ still exists");
         }
+        
+        else {
+            console.log("user wins");
+            document.getElementById("instructions").innerHTML = "You win!"
+            wins++;
+            console.log("Wins: " + wins)
+            document.getElementById("wins").innerHTML = wins;
+   
             
+    }
+}
+    
+    // When the user loses
+
+    function loseGame(){
+        document.getElementById("instructions").innerHTML = "You lose!"
+        
+        
         }
-    
-    
-    
-    
-    
-    
-    
-
-
-
-    
-    
-    
-
-
-
-// if no _, user Wins
-
-// if _, compare letter to already guessed array
-
-// if userGuess is in alreadyGuessed, break the function
-
-// if userGuess is not in alreadyGuessed, add it, decrease guessesRemaining by 1
-
-
-
-
-    
