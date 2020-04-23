@@ -2,6 +2,7 @@ console.log("Welcome to Hangman!")
 
 var wins = 0;
 var guessesRemaining = ""
+var userWins = ""
 var hangmanArray = [];
 var alreadyGuessed = [];
 console.log("Already Guessed:" + alreadyGuessed)
@@ -70,7 +71,10 @@ function currentWordInit(){
         var userGuess = event.key.toUpperCase();
         console.log("User Guess: ", userGuess);
         var guessSuccess = false;
+        userWins = false;
         console.log(guessSuccess)
+
+    
 
 
 
@@ -104,6 +108,7 @@ function currentWordInit(){
         document.getElementById("instructions").innerHTML = userGuess + " is in the word!"
         console.log("Guesses Remaining: " + guessesRemaining)
         console.log(guessSuccess)
+        didYouWin()
         
     }
 
@@ -117,53 +122,31 @@ function currentWordInit(){
         document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.join(" ")
     }
 
-    
-
     }
 }
 
-    }
+// scan wordDisplay array for _
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        function didYouWin(){
     
-    // scan wordDisplay array for _
-
-          
+            if (wordDisplay.includes("_ ")) {
+                console.log("_ still exists")
+            }
+            else {
+                console.log("user wins")
+                document.getElementById("instructions").innerHTML = "You win!"
+                wins++;
+            }
+            
+        }
+            
+        }
     
-
-        // for (i = 0; i < hangmanArray.length; i++){
-        //     if (wordDisplay[i] === "_ " && wordDisplay[i] !== "---") {
-        //         document.getElementById("instructions").innerHTML = "Guess again!";
-                
-        //     }
-
-        //     else if (wordDisplay[i] !== "_ " && wordDisplay[i] !== "---");
-        //         document.getElementById("instructions").innerHTML = "You win!";
-        // }
-
+    
+    
+    
+    
+    
     
 
 
@@ -184,5 +167,5 @@ function currentWordInit(){
 
 
 
- 
+
     
