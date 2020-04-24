@@ -2,21 +2,17 @@ console.log("Welcome to Hangman!")
 
 // Variables set to initial values
 
-
 var wins = 0;
-var guessesRemaining = ""
+var losses = 0;
+var guessesRemaining = 12
 var userWins = ""
 var hangmanArray = [];
 var alreadyGuessed = [];
-var duplicateGuess = false;
 
-initialize();
-
-function initialize(){
-    guessesRemaining = 12;
     document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
     document.getElementById("wins").innerHTML = wins;
-}
+    document.getElementById("losses").innerHTML = losses;
+
 
 // A word is randomly chosen from the beatlesSongs array for this round
 
@@ -148,8 +144,10 @@ function currentWordInit(){
             console.log("user wins");
             document.getElementById("instructions").innerHTML = "You win!"
             wins++;
+            playSound();
             console.log("Wins: " + wins)
             document.getElementById("wins").innerHTML = wins;
+            reStartGame();
    
             
     }
@@ -159,6 +157,58 @@ function currentWordInit(){
 
     function loseGame(){
         document.getElementById("instructions").innerHTML = "You lose!"
-        
-        
+        losses++;
+        document.getElementById("losses").innerHTML = losses;
+        reStartGame();
         }
+
+    function reStartGame(){
+        var delayInMilliseconds = 1000; 
+        setTimeout(function() {
+                console.log("Restarting Game...")
+                guessesRemaining = 12;
+                hangmanArray = [];
+                alreadyGuessed = [];
+                songChooser();
+                wordToArray();
+                currentWordInit();
+                document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed;
+                document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
+            }, delayInMilliseconds);
+        }
+
+        
+
+
+    function playSound() {
+        console.log("playing sound")
+        
+        if (hangmanWord === "Drive My Car") {
+            var audio = new Audio('./assets/audio/DriveMyCar.mp3');
+            audio.play();
+            document.getElementById("winningSrc").src="./assets/images/DriveMyCar.jpg"
+        }
+        if (hangmanWord === "All You Need Is Love") {
+            var audio = new Audio('./assets/audio/AllYouNeedIsLove.mp3');
+            document.getElementById("winningSrc").src="./assets/images/AllYouNeedIsLove.jpg"
+            audio.play();
+        }
+        if (hangmanWord === "Eleanor Rigby") {
+            var audio = new Audio('./assets/audio/EleanorRigby.mp3');
+            document.getElementById("winningSrc").src="./assets/images/EleanorRigby.jpg"
+            audio.play();
+        }
+        if (hangmanWord === "Help") {
+            var audio = new Audio('./assets/audio/Help.mp3');
+            document.getElementById("winningSrc").src="./assets/images/Help.jpg"
+            audio.play();
+        }
+        if (hangmanWord === "I Am The Walrus") {
+            var audio = new Audio('./assets/audio/IAmTheWalrus.mp3');
+            document.getElementById("winningSrc").src="./assets/images/IAmTheWalrus.jpg"
+            audio.play();  
+        }  
+        }
+    
+    
+        

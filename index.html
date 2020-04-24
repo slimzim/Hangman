@@ -4,30 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+
+  </head>
 <body>
 
-    <h1>Hangman</h1>
-    <br />
-    <p><span id="instructions">Welcome to Hangman!  Press any key to get started.</span></p>
-    <br />
-    <p>Current Word: <span id="currentWord"></span></p>
-    <br />
-    <p>Number of Guesses Remaining: <span id="guessesRemaining"></span></p>
-    <br />
-    <p>Already Guessed: <span id="alreadyGuessed"></span></p>
-    <br />
-    <p>Wins: <span id="wins"></span></p>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1 class="display-3 text-uppercase">Beatles Hangman</h1>
+      <hr class="my-4">
+      <h2 class="display-4"><span id="currentWord"></span></h2>
+    </div>
+
+    <div class="row">
+
+    <div class="col-lg-6">
+        
+        <div class="card">
+          <h3 class="card-header">Instructions</h3>
+          <div class="card-body">
+            <p class="card-text"><span id="instructions">Welcome to Hangman!  Type your first guess of the song title.</span></p>  
+          </div>
+        </div>
+
+        <br />
+
+        <div class="card">
+          <h3 class="card-header">Guesses Remaining</h3>
+          <div class="card-body">
+            <p class="card-text"><span id="guessesRemaining"></span></p>  
+          </div>
+        </div>
+
+        <br />
+
+        <div class="card">
+          <h3 class="card-header">Already Guessed</h3>
+          <div class="card-body">
+            <p class="card-text"><span id="alreadyGuessed"></span></p>  
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row"> 
+
+          <div class="col-md-6">
+            <div class="card">
+            <h5 class="card-header">Wins</h5>
+            <div class="card-body">
+              <p class="card-text"><span id="wins"></span></p>  
+            </div>
+          </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="card">
+            <h5 class="card-header">Losses</h5>
+            <div class="card-body">
+              <p class="card-text"><span id="losses"></span></p>  
+            </div>
+            </div>
+          </div>
+        
+        </div>
+        
+    </div>
+
+    <div class="col-lg-6">
+
+      <div class="card">
+          <img id="winningSrc" src="./assets/images/Beatles.jpg">
+      </div>
+      
+    </div>
+            
+  </div>
+
 
     
     <script src="assets/javascript/game.js"></script>
     
 
-    <div id="audio"></div>
+    <div><span id="winningPic">
 
+      
 
+    </span></div>
 
-
+    
+  </div>
 
 </body>
 </html>
