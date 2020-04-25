@@ -79,11 +79,12 @@ function currentWordInit(){
         console.log("User Guess: ", userGuess);
         var guessSuccess = false;
         userWins = false;
+        scanGuess()
 
 // This function determines if the user has already guessed that letter or not
 
     function scanGuess() {
-        if (alreadyGuessed.includes(userGuess) && alreadyGuessed.length > 1) {
+        if (alreadyGuessed.includes(userGuess)) {
             console.log("duplicate guess")
             document.getElementById("instructions").innerHTML = "You already guessed " + userGuess + "!";         
         }
@@ -177,10 +178,7 @@ function currentWordInit(){
             }, delayInMilliseconds);
         }
 
-        
-
-
-    function playSound() {
+        function playSound() {
         console.log("playing sound")
         
         if (hangmanWord === "Drive My Car") {
@@ -208,7 +206,4 @@ function currentWordInit(){
             document.getElementById("winningSrc").src="./assets/images/IAmTheWalrus.jpg"
             audio.play();  
         }  
-        }
-    
-    
-        
+        } 
