@@ -184,26 +184,26 @@ function currentWordInit(){
         if (hangmanWord === "Drive My Car") {
             var audio = new Audio('./assets/audio/DriveMyCar.mp3');
             audio.play();
-            document.getElementById("winningSrc").src="./assets/images/DriveMyCar.jpg"
+            document.getElementById("winningSrc").src="./assets/images/DriveMyCar.JPG"
         }
         if (hangmanWord === "All You Need Is Love") {
             var audio = new Audio('./assets/audio/AllYouNeedIsLove.mp3');
-            document.getElementById("winningSrc").src="./assets/images/AllYouNeedIsLove.jpg"
+            document.getElementById("winningSrc").src="./assets/images/AllYouNeedIsLove.JPG"
             audio.play();
         }
         if (hangmanWord === "Eleanor Rigby") {
             var audio = new Audio('./assets/audio/EleanorRigby.mp3');
-            document.getElementById("winningSrc").src="./assets/images/EleanorRigby.jpg"
+            document.getElementById("winningSrc").src="./assets/images/EleanorRigby.JPG"
             audio.play();
         }
         if (hangmanWord === "Help") {
             var audio = new Audio('./assets/audio/Help.mp3');
-            document.getElementById("winningSrc").src="./assets/images/Help.jpg"
+            document.getElementById("winningSrc").src="./assets/images/Help.JPG"
             audio.play();
         }
         if (hangmanWord === "I Am The Walrus") {
             var audio = new Audio('./assets/audio/IAmTheWalrus.mp3');
-            document.getElementById("winningSrc").src="./assets/images/IAmTheWalrus.jpg"
+            document.getElementById("winningSrc").src="./assets/images/IAmTheWalrus.JPG"
             audio.play();  
         }  
         } 
